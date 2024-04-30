@@ -1,0 +1,19 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+        <main class="centered">
+            <h1><%=book.title%></h1> 
+            <hr>
+            <div>
+                <img src="<%=book.imageUrl%>" alt="<%=book.title%>"> 
+            </div>
+            <h2><%= book.author %></h2>
+            <p><%= book.description %></p>
+            <form action="/cart" method="POST">
+                <button class="btn" type="submit">Add to Cart</button>
+                <input type="hidden" name="bookId" value="<%= book._id %>">
+            </form>
+        </main>
+        <%- include('../includes/end.ejs') %>

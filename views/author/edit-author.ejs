@@ -1,0 +1,25 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/forms.css">
+    <link rel="stylesheet" href="/css/book.css">
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <form class="book-form" action="/author/<% if (editing) { %>edit-author<% } else { %>add-author<% } %>" method="POST">
+            <div class="form-control">
+                <label for="name">name</label>
+                <input type="text" name="name" id="name" value="<% if (editing) { %><%= author.name %><% } %>">
+            </div>
+            <div class="form-control">
+                <label for="email">email</label>
+                <input type="text" name="email" id="email" value="<% if (editing) { %><%= author.email %><% } %>">
+            </div>
+            <% if (editing) { %>
+                <input type="hidden" value="<%= author._id %>" name="authorId">
+            <% } %>
+            <button class="btn" type="submit"><% if (editing) { %>Update Author<% } else { %>Add Author<% } %></button>
+        </form>
+    </main>
+<%- include('../includes/end.ejs') %>
